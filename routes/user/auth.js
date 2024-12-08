@@ -65,7 +65,7 @@ route.post("/login", async (req, res) => {
             return res.status(400).send({ Message: "Invalid credentials", Success: false });
         }
 
-        res.status(200).send({ Message: "User Authenticated", Success: true });
+        res.status(200).send({ Message: "User Authenticated", Success: true, User: user });
     } catch (error) {
         console.error(`Error logging in: ${error}`);
         res.status(500).send({ Message: "Server Error while logging in", Success: false });

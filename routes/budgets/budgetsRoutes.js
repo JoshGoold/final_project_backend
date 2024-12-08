@@ -96,7 +96,7 @@ route.post("/expense", async (req,res)=>{
 })
 
 route.delete("/expense", async (req,res)=>{
-    const {budgetid, expenseid} = req.body;
+    const {budgetid, expenseid} = req.query;
     try {
         await Budget.findByIdAndUpdate(budgetid, {
             $pull: {expenses: expenseid}

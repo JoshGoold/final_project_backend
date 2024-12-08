@@ -39,7 +39,7 @@ route.delete("/saving", async (req,res)=> {
 })
 
 route.post("/saving", async (req,res)=> {
-    const {name, goal, saved, icon, userid} = req.body;
+    const {name, goal, icon, userid} = req.body;
     try {
         const user = await User.findById(userid)
         if(!user){
@@ -48,8 +48,6 @@ route.post("/saving", async (req,res)=> {
         const saving = new Saving({
             name: name,
             goal: goal,
-            left: goal-saved,
-            saved: saved,
             icon: icon,
         })
         await saving.save();
