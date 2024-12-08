@@ -22,10 +22,10 @@ app.use(express.json())
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 
-mongoose.connect(procress.env.DB_CONNECT)
+mongoose.connect(process.env.DB_CONNECT)
 .then(()=> {
     console.log("DATABASE CONNECTED")
-    app.listen(procress.env.PORT, ()=> console.log(`SERVER STARTED\nVIEW HERE: http://localhost:${process.env.PORT}`))
+    app.listen(process.env.PORT, ()=> console.log(`SERVER STARTED\nVIEW HERE: http://localhost:${process.env.PORT}`))
 })
 .catch(e=> console.log("Error connecting to database: %d",e))
 
