@@ -5,7 +5,8 @@ const PlanItemSchema = new mongoose.Schema({
     notes: {type: String},
     price: {type: Number},
     keyword: {type: String, required: true},
-    color: {type: String, required: true}
+    color: {type: String, required: true},
+    createdAt: {type: Date, default: ()=> Date.now(), immutable: true}
 })
 
 module.exports = mongoose.model("PlanItem", PlanItemSchema)

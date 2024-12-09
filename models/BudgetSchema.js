@@ -5,7 +5,8 @@ const BudgetSchema = new mongoose.Schema({
     amount: {type: Number, required: true},
     icon: {type: String, required: true},
     retired: {type: Boolean, default: false},
-    expenses: [{type: mongoose.SchemaTypes.ObjectId, ref: "Expense"}]
+    expenses: [{type: mongoose.SchemaTypes.ObjectId, ref: "Expense"}],
+    createdAt: {type: Date, default: ()=> Date.now(), immutable: true}
 })
 
 module.exports = mongoose.model("Budget", BudgetSchema)
