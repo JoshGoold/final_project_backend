@@ -10,7 +10,9 @@ const incomeRoute = require("./routes/income/incomeRoutes")
 const budgetRoute = require('./routes/budgets/budgetsRoutes')
 
 const app = express()
-
+app.use(express.json())
+app.use(cors())
+app.use(express.urlencoded({ extended: true }))
 app.use('/', authroute)
 app.use('/', userRoute)
 app.use('/', savingRoute)
@@ -18,9 +20,7 @@ app.use('/', planRoute)
 app.use('/', incomeRoute)
 app.use('/', budgetRoute)
 
-app.use(express.json())
-app.use(cors())
-app.use(express.urlencoded({ extended: true }))
+
 
 mongoose.connect(process.env.DB_CONNECT)
 .then(()=> {

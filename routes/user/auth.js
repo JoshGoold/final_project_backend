@@ -6,6 +6,7 @@ const route = express.Router();
 
 // Register Route
 route.post("/register", async (req, res) => {
+    console.log(req.body)
     const { username, email, password } = req.body;
 
     // Validate required fields
