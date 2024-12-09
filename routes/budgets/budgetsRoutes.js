@@ -88,7 +88,7 @@ route.post("/expense", async (req,res)=>{
         await expense.save()
         budget.expenses.push(expense._id)
         await budget.save()
-        return res.status(200).send({Message: "Expense created successfully", Success: true})
+        return res.status(200).send({Message: "Expense created successfully", Success: true, Expense: expense})
     } catch (error) {
         console.error("Error creating expense: ",error)
         return res.status(500).send({Message: "Error creating expense", Success: false})
