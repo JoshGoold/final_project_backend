@@ -116,7 +116,7 @@ route.post("/planitem", async (req,res)=>{
         await planitem.save();
         plan.planitems.push(planitem._id);
         await plan.save();
-        return res.status(200).send({Message: "Plan item created", Success: true})
+        return res.status(200).send({Message: "Plan item created", Success: true, planitem: planitem})
     } catch (error) {
         console.error("Error creating plan item", error);
         return res.status(500).send({Message: "Error creating plan item", Success: false})
