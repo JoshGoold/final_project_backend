@@ -99,7 +99,7 @@ route.put("/plan", async (req, res) => {
 
 
 route.post("/planitem", async (req,res)=>{
-    const {planid, name, notes, price, keyword, color} = req.body;
+    const {planid, name, notes, price} = req.body;
     if (!planid || !name) {
         return res.status(400).send({ Message: "Plan ID and name are required", Success: false });
     }
@@ -112,8 +112,6 @@ route.post("/planitem", async (req,res)=>{
             name: name,
             notes: notes,
             price: price,
-            keyword: keyword,
-            color: color
         })
         await planitem.save();
         plan.planitems.push(planitem._id);
