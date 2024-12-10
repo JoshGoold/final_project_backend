@@ -6,7 +6,7 @@ const SavingSchema = new mongoose.Schema({
     saved: {type: Number, default: 0},
     left: {type: Number, default: 0},
     icon: {type: String, required: true},
-    retired: {type: Boolean, required: true, default: false},
+    retired: {type: Boolean, default: false},
     deposits: [{type: mongoose.SchemaTypes.ObjectId, ref: "Deposit"}],
     createdAt: {type: Date, default: ()=> Date.now(), immutable: true}
 })
