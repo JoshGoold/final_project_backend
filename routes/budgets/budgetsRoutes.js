@@ -7,6 +7,7 @@ const route = express.Router()
 
 route.get("/budget", async (req,res)=> {
     const {id} = req.query;
+    
     try {
         const budget = await Budget.findById(id).populate("expenses").lean();
         if(!budget){
@@ -21,6 +22,9 @@ route.get("/budget", async (req,res)=> {
 
 route.delete("/budget", async (req,res)=> {
     const {budgetid, userid} = req.query;
+    if (!budgetid || !userid) {
+        return res.status(400).send({ Message: "Budget ID and User ID are required", Success: false });
+    }
     try {
         await Budget.findByIdAndDelete(budgetid)
         await User.findByIdAndUpdate(userid, {
