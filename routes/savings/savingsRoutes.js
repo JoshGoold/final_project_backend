@@ -32,6 +32,7 @@ route.delete("/saving", async (req,res)=> {
         }
         user.savings = user.savings.filter(saving => saving.toString() === savingid);
         await user.save();
+        return res.status(200).send({Message: "Saving deleted", Success: true})
     } catch (error) {
         console.error("Server error occured when deleting a saving: ",error)
         return res.status(500).send({Message: "Server error occured when deleting a saving", Success: false})
@@ -54,7 +55,7 @@ route.post("/saving", async (req,res)=> {
 
         user.savings.push(saving._id);
         await user.save()
-
+        return res.status(200).send({Message: "Saving created", Success: true, Saving: saving})
     } catch (error) {
         console.error("Server error while creating saving: ",error)
         return res.status(500).send({Message: "Server error while creating saving", Success: false})
