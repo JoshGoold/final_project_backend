@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema({
     email: {type: String, required: true},
     password: {type: String, required: true},
     budgets: [{type: mongoose.SchemaTypes.ObjectId, ref: "Budget"}],
-    income: [{type: mongoose.SchemaTypes.ObjectId, ref: "Income"}],
+    income: {type: mongoose.SchemaTypes.ObjectId, ref: "Income"},
     plans: [{type: mongoose.SchemaTypes.ObjectId, ref: "Plan"}],
     savings: [{type: mongoose.SchemaTypes.ObjectId, ref: "Saving"}],   
 })
