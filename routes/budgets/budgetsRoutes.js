@@ -48,7 +48,7 @@ route.post("/budget", async (req,res)=> {
         await budget.save()
         user.budgets.push(budget._id)
         await user.save()
-        return res.status(200).send({Message: "Budget created successfully", Success: true})
+        return res.status(200).send({Message: "Budget created successfully", Success: true, Budget: budget})
     } catch (error) {
         console.error("Error creating budget: ",error)
         return res.status(500).send({Message: "Error creating budget", Success: false})
